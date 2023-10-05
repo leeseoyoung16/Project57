@@ -62,7 +62,7 @@ TreeNode* newNode(int key) {
     return temp;
 }
 
-TreeNode* insert(TreeNode* root, int key) { //(Àç±Í) Ãß°¡
+TreeNode* insert(TreeNode* root, int key) { //(Àç±Í) Ãß°¡1
     count++;
     if (root == NULL) {
         
