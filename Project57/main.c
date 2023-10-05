@@ -11,6 +11,7 @@
 //노드 삭제(반복) D
 //종료 C
 
+//count 실행사진과 맞추려다 이상하게 제출하여, 수정 제출합니다. (10.05)
 typedef int element;
 
 typedef struct TreeNode {
@@ -62,18 +63,19 @@ TreeNode* newNode(int key) {
 }
 
 TreeNode* insert(TreeNode* root, int key) { //(재귀) 추가
-
+    count++;
     if (root == NULL) {
-        count++;
+        
         return newNode(key);
     }
+    
 
     if (key < root->key) {
-        count++;
+        
         root->left = insert(root->left, key);
     }
     else if (key > root->key) {
-        count++;
+        
         root->right = insert(root->right, key);
     }
     else {
@@ -100,16 +102,16 @@ TreeNode* delete(TreeNode* root, int key) { //(재귀) 삭제
         return root;
     count++;
     if (key < root->key) {
-        count++;
+        
         root->left = delete(root->left, key);
     }
     else if (key > root->key) {
-        count++;
+        
         root->right = delete(root->right, key);
     }
 
     else {
-        count++;
+        
         if (root->left == NULL) {
             
             TreeNode* temp = root->right;
@@ -122,10 +124,10 @@ TreeNode* delete(TreeNode* root, int key) { //(재귀) 삭제
         }
         TreeNode* temp = minValueNode(root->right);
         root->key = temp->key;
-        count++;
+        
         root->right = delete(root->right, temp->key);
     }
-    count++;
+    
     return root;
 }
 
@@ -188,7 +190,7 @@ TreeNode* delete2(TreeNode* root, int key) { //삭제 (반복)
     }
 
     if (current->left == NULL) {
-        count++;
+        
         TreeNode* temp = current->right;
         if (parent == NULL)
             free(current);
@@ -199,7 +201,7 @@ TreeNode* delete2(TreeNode* root, int key) { //삭제 (반복)
         return root;
     }
     else if (current->right == NULL) {
-        count++;
+        
         TreeNode* temp = current->left;
         if (parent == NULL)
             free(current);
@@ -210,7 +212,7 @@ TreeNode* delete2(TreeNode* root, int key) { //삭제 (반복)
         return root;
     }
     else {
-        count++;
+        
         TreeNode* successor = minValueNode(current->right);
         current->key = successor->key;
         current->right = delete2(current->right, successor->key);
